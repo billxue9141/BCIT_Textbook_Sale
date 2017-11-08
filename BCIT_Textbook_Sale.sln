@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BCIT_Textbook_Sale", "BCIT_Textbook_Sale\BCIT_Textbook_Sale.csproj", "{AF7C6C42-59B5-4CB6-A121-141D3EDAF456}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AF7C6C42-59B5-4CB6-A121-141D3EDAF456}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF7C6C42-59B5-4CB6-A121-141D3EDAF456}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF7C6C42-59B5-4CB6-A121-141D3EDAF456}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF7C6C42-59B5-4CB6-A121-141D3EDAF456}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
