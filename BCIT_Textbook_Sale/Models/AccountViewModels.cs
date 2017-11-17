@@ -79,6 +79,16 @@ namespace BCIT_Textbook_Sale.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "Incorrect program name.")]
+        [Display(Name = "Program Name")]
+        public string ProgramName { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -101,8 +111,8 @@ namespace BCIT_Textbook_Sale.Models
 
         public string Code { get; set; }
     }
-
-    public class ForgotPasswordViewModel
+   
+        public class ForgotPasswordViewModel
     {
         [Required]
         [EmailAddress]
