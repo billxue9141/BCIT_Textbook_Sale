@@ -58,6 +58,26 @@ namespace BCIT_Textbook_Sale.Models
         public string ConfirmPassword { get; set; }
     }
 
+    //TODO:
+    public class ChangeNameViewModel
+    {
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "New name")]
+        public string NewName { get; set; }
+    }
+
+    //TODO:
+    public class ChangeProgramViewModel
+    {
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "New program name")]
+        public string NewProgramName { get; set; }
+    }
+
     public class AddPhoneNumberViewModel
     {
         [Required]

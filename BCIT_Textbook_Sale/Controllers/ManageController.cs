@@ -245,6 +245,62 @@ namespace BCIT_Textbook_Sale.Controllers
         }
 
         //
+        // GET: /Manage/ChangeName
+        public ActionResult ChangeName()
+        {
+            return View();
+        }
+
+        //TODO:
+        //
+        // POST: /Manage/ChangeName
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeName(ChangeNameViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+                var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+                if (user != null)
+                {
+                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                }
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+
+        }
+
+        //
+        // GET: /Manage/ChangeProgram
+        public ActionResult ChangeProgram()
+        {
+            return View();
+        }
+
+        //TODO:
+        //
+        // POST: /Manage/ChangeProgram
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ChangeProgram(ChangeProgramViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
+            if (user != null)
+            {
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+            }
+            return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+
+        }
+
+        //
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
