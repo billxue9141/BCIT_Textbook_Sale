@@ -1,16 +1,21 @@
-﻿using System;
+﻿using BCIT_Textbook_Sale.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity;
+using System.Net;
 
 namespace BCIT_Textbook_Sale.Controllers
 {
     public class HomeController : Controller
     {
+        private TextbookDBEntities db = new TextbookDBEntities();
+
         public ActionResult Index()
         {
-            return View();
+            return View(db.Programs.ToList());
         }
 
         public ActionResult About()
