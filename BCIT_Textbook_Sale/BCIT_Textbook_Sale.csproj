@@ -200,6 +200,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PostingsController.cs" />
     <Compile Include="Controllers\ProgramsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -318,11 +319,15 @@
     <Content Include="Views\Programs\Edit.cshtml" />
     <Content Include="Views\Programs\Index.cshtml" />
     <Content Include="Views\Home\_NewPostPartial.cshtml" />
-    <Content Include="Views\Home\NewPost.cshtml" />
     <Content Include="Views\Manage\ChangeName.cshtml" />
     <Content Include="Views\Manage\ChangeProgram.cshtml" />
     <Content Include="Views\Home\BooksOnRequest.cshtml" />
     <Content Include="Views\Home\BooksForSale.cshtml" />
+    <Content Include="Views\Postings\Create.cshtml" />
+    <Content Include="Views\Postings\Delete.cshtml" />
+    <Content Include="Views\Postings\Details.cshtml" />
+    <Content Include="Views\Postings\Edit.cshtml" />
+    <Content Include="Views\Postings\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
