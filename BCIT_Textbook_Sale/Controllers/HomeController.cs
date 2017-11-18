@@ -73,6 +73,20 @@ namespace BCIT_Textbook_Sale.Controllers
             return View();
         }
 
+        public ActionResult BooksForSale()
+        {
+            ViewBag.Message = "Here are all the books for sale at the moment.";
+
+            return View();
+        }
+
+        public ActionResult BooksOnRequest()
+        {
+            ViewBag.Message = "People are looking for these books.";
+
+            return View();
+        }
+
         //
         // GET: /Manage/NewPost
         public ActionResult NewPost()
@@ -98,7 +112,8 @@ namespace BCIT_Textbook_Sale.Controllers
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
             return RedirectToAction("Index");
-
         }
+
+
     }
 }

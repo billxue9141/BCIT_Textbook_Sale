@@ -3,6 +3,6 @@
 {
     {
     @Html.AntiForgeryToken()
-            @Html.ActionLink("Create New Post", "NewPost", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })
+            @Html.ActionLink("Create New Post", "NewPost", "Home", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-large" })
     }
 }
