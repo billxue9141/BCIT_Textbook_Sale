@@ -7,7 +7,7 @@
     <h1>BCIT Textbook Sales</h1>
 </div>
 <div class="jumbotron">
-    <form>
+    <form method="post" action="~/Home/Contact">
         <select class="form-control-select">
             <option>Program</option>
             @foreach (var item in Model)
@@ -21,6 +21,6 @@
             <option>Sell</option>
         </select>
         <input class="form-control-searchbar" type="text" />
-        <input type="button" value="Search" class="btn btn-outline-primary" />
+        <input type="submit" value="Search" class="btn btn-outline-primary" />
     </form>
 </div>
