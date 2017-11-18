@@ -1,7 +1,33 @@
-﻿@{
+﻿@model IEnumerable<BCIT_Textbook_Sale.Models.Program>
+@{
     ViewBag.Title = "Books For Sale";
 }
 <h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<p>Use this area to provide additional information.</p>
+<table class="table table-striped">
+    <thread>
+        <tr>
+            <th>Program ID</th>
+            <th>Program Name</th>
+        </tr>
+    </thread>
+    <tbody>
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Matching Program
+                </td>
+            </tr>
+        } else
+        {
+            foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.programID</td>
+                    <td>@item.programName</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

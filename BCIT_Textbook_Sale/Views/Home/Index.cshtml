@@ -6,23 +6,15 @@
 <div class="jumbotron">
     <h1>BCIT Textbook Sales</h1>
 </div>
+
 <div class="jumbotron">
-    <form>
-        <select class="form-control-select">
-            <option>Program</option>
-            @foreach (var item in Model)
-            {
-                <option>@Html.DisplayFor(modelItem => item.programID)</option>
-            }
-        </select>
-        <select class="form-control-select">
-            <option>Buy/Sell</option>
-            <option>Buy</option>
-            <option>Sell</option>
-        </select>
-        <input class="form-control-searchbar" type="text" />
-        <input type="button" value="Search" class="btn btn-outline-primary" />
+    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
+    {
+        @Html.DropDownList("ProgramID", null, new { @class = "form-control-select" })
+        @Html.DropDownList("BuySell", null, new { @class = "form-control-select" })
+        @Html.TextBox("search", null ,new { @class = "form-control-searchbar" });
+        <input type="submit" value="Search" class="btn btn-outline-primary" />
+    }
         <br />
         @Html.Partial("_NewPostPartial")
-    </form>
 </div>

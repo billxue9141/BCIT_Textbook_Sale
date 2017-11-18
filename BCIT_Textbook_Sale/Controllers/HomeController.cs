@@ -10,7 +10,6 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
 using Microsoft.Owin.Security;
-using BCIT_Textbook_Sale.Models;
 
 namespace BCIT_Textbook_Sale.Controllers
 {
@@ -56,6 +55,21 @@ namespace BCIT_Textbook_Sale.Controllers
 
         public ActionResult Index()
         {
+            List<SelectListItem> items = new List<SelectListItem>();
+            var programId = db.Programs.Include(id => id.programID);
+            items.Add(new SelectListItem { Text = "Program", Value = "Program" });
+            foreach(Program p in db.Programs)
+            {
+                items.Add(new SelectListItem { Text = p.programID, Value = p.programID });
+            }
+            ViewBag.ProgramID = items;
+
+            List<SelectListItem> buyorsell = new List<SelectListItem>();
+            buyorsell.Add(new SelectListItem { Text = "Buy/Sell", Value = "Buy/Sell" });
+            buyorsell.Add(new SelectListItem { Text = "Buy", Value = "Buy" });
+            buyorsell.Add(new SelectListItem { Text = "Sell", Value = "Sell" });
+
+            ViewBag.BuySell = buyorsell;
             return View(db.Programs.ToList());
         }
 
@@ -73,11 +87,10 @@ namespace BCIT_Textbook_Sale.Controllers
             return View();
         }
 
-        public ActionResult BooksForSale()
+        public ActionResult BooksForSale(string search)
         {
-            ViewBag.Message = "Here are all the books for sale at the moment.";
 
-            return View();
+            return View(db.Programs.Where(id => id.programID.StartsWith(search) || search == null));
         }
 
         public ActionResult BooksOnRequest()
