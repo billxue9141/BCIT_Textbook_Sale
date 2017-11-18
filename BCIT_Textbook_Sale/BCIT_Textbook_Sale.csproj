@@ -214,6 +214,7 @@
     <Compile Include="Models\Program.cs">
       <DependentUpon>TextbookDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SearchViewModels.cs" />
     <Compile Include="Models\TextbookDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
