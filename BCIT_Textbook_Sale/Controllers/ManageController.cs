@@ -61,6 +61,8 @@ namespace BCIT_Textbook_Sale.Controllers
                 : message == ManageMessageId.Error ? "An error has occurred."
                 : message == ManageMessageId.AddPhoneSuccess ? "Your phone number was added."
                 : message == ManageMessageId.RemovePhoneSuccess ? "Your phone number was removed."
+                : message == ManageMessageId.ChangeUserNameSuccess ? "Your user name has been changed."
+                : message == ManageMessageId.ChangeProgramSuccess ? "Your program has been changed."
                 : "";
 
             var userId = User.Identity.GetUserId();
@@ -268,7 +270,7 @@ namespace BCIT_Textbook_Sale.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
-                return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+                return RedirectToAction("Index", new { Message = ManageMessageId.ChangeUserNameSuccess });
 
         }
 
@@ -437,6 +439,8 @@ namespace BCIT_Textbook_Sale.Controllers
             SetPasswordSuccess,
             RemoveLoginSuccess,
             RemovePhoneSuccess,
+            ChangeUserNameSuccess,
+            ChangeProgramSuccess,
             Error
         }
 

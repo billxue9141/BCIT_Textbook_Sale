@@ -7,7 +7,7 @@
     <h1>BCIT Textbook Sales</h1>
 </div>
 <div class="jumbotron">
-    <form method="post" action="~/Home/Contact">
+    <form>
         <select class="form-control-select">
             <option>Program</option>
             @foreach (var item in Model)
@@ -21,6 +21,8 @@
             <option>Sell</option>
         </select>
         <input class="form-control-searchbar" type="text" />
-        <input type="submit" value="Search" class="btn btn-outline-primary" />
+        <input type="button" value="Search" class="btn btn-outline-primary" />
+        <br />
+        @Html.Partial("_NewPostPartial")
     </form>
 </div>
