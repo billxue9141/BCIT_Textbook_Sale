@@ -9,10 +9,10 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-inverse navbar-fixed-left">
-        <div class="container-left">
-            <div class="navbar-header-left">
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -20,13 +20,13 @@
                 @Html.ActionLink("BCIT Textbooks For Trade", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav mr-auto">
-                    <li class="nav-item">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Postings", "Index", "Postings", new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Books for sale", "BooksForSale", "Home", new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Books on request", "BooksOnRequest", "Home", new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("About", "About", "Home", new { @class = "nav-link" })</li>
-                    <li class="nav-item">@Html.ActionLink("Contact", "Contact", "Home", new { @class = "nav-link" })</li>
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Postings", "Index", "Postings")</li>
+                    <li>@Html.ActionLink("Books for sale", "BooksForSale", "Home")</li>
+                    <li>@Html.ActionLink("Books on request", "BooksOnRequest", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
