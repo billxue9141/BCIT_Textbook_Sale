@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TextbookDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TextbookDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Postings">
           <Key>
             <PropertyRef Name="Id" />
@@ -15,6 +15,8 @@
           <Property Name="postdate" Type="datetime" Nullable="false" />
           <Property Name="description" Type="text" Nullable="false" />
           <Property Name="programID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="postingType" Type="varchar" MaxLength="50" />
+          <Property Name="imglink" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -44,8 +46,7 @@
             <End Role="Postings" EntitySet="Postings" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TextbookDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -60,6 +61,8 @@
           <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="programID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Program" Relationship="Self.FK_Postings_Program" FromRole="Postings" ToRole="Program" />
+          <Property Name="postingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imglink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -99,6 +102,8 @@
           <EntitySetMapping Name="Postings">
             <EntityTypeMapping TypeName="TextbookDBModel.Posting">
               <MappingFragment StoreEntitySet="Postings">
+                <ScalarProperty Name="imglink" ColumnName="imglink" />
+                <ScalarProperty Name="postingType" ColumnName="postingType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="username" ColumnName="username" />
