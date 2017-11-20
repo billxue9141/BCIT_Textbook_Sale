@@ -53,6 +53,7 @@ namespace BCIT_Textbook_Sale.Controllers
             if (ModelState.IsValid)
             {
                 posting.postdate = DateTime.Now;
+                //posting.Id = db.Postings.OrderByDescending(u => u.Id).FirstOrDefault().Id++;
                 db.Postings.Add(posting);
                 db.SaveChanges();
                 return RedirectToAction("Index");
