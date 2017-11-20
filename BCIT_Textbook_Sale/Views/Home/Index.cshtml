@@ -10,11 +10,42 @@
 <div class="jumbotron">
     @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
     {
-        @Html.DropDownList("ProgramID", null, new { @class = "form-control-select" })
-        @Html.DropDownList("BuySell", null, new { @class = "form-control-select" })
+        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
+        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
         @Html.TextBox("search", null ,new { @class = "form-control-searchbar" });
         <input type="submit" value="Search" class="btn btn-outline-primary" />
     }
         <br />
         @Html.Partial("_NewPostPartial")
+</div>
+<div class="jumbotron">
+    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
+    {
+        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
+        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
+        @Html.TextBox("search", null, new { @class = "form-control-searchbar" });
+        <input type="submit" value="Search" class="btn btn-outline-primary" />
+    }
+    <br />
+    @Html.Partial("_NewPostPartial")
+</div><div class="jumbotron">
+    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
+    {
+        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
+        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
+        @Html.TextBox("search", null, new { @class = "form-control-searchbar" });
+        <input type="submit" value="Search" class="btn btn-outline-primary" />
+    }
+    <br />
+    @Html.Partial("_NewPostPartial")
+</div><div class="jumbotron">
+    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
+    {
+        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
+        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
+        @Html.TextBox("search", null, new { @class = "form-control-searchbar" });
+        <input type="submit" value="Search" class="btn btn-outline-primary" />
+    }
+    <br />
+    @Html.Partial("_NewPostPartial")
 </div>

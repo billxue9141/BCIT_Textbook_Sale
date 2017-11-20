@@ -62,14 +62,14 @@ namespace BCIT_Textbook_Sale.Controllers
             {
                 items.Add(new SelectListItem { Text = p.programID, Value = p.programID });
             }
-            ViewBag.ProgramID = items;
+            ViewBag.proID = items;
 
             List<SelectListItem> buyorsell = new List<SelectListItem>();
             buyorsell.Add(new SelectListItem { Text = "Buy/Sell", Value = "Buy/Sell" });
             buyorsell.Add(new SelectListItem { Text = "Buy", Value = "Buy" });
             buyorsell.Add(new SelectListItem { Text = "Sell", Value = "Sell" });
 
-            ViewBag.BuySell = buyorsell;
+            ViewBag.buyORsell = buyorsell;
             return View(db.Programs.ToList());
         }
 
@@ -87,10 +87,10 @@ namespace BCIT_Textbook_Sale.Controllers
             return View();
         }
 
-        public ActionResult BooksForSale(string search)
+        public ActionResult BooksForSale(string proID, string buyORsell, string search)
         {
 
-            return View(db.Programs.Where(id => id.programID.StartsWith(search) || search == null));
+            return View(db.Programs.Where(id => id.programID.Contains(proID) && id.programName.Contains(search)));
         }
 
         public ActionResult BooksOnRequest()
