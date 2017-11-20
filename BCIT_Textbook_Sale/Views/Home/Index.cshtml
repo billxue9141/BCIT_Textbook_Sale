@@ -6,7 +6,7 @@
 <div class="jumbotron-title">
     <h1>BCIT Textbook Sales</h1>
 </div>
-<div class="jumbotron">
+<div class="jumbotron-searchbar">
     @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
     {
         @Html.DropDownList("proID", null, new { @class = "form-control" , style = "max-width: 210px"})
@@ -14,8 +14,7 @@
         <br />
         @Html.TextBox("search", null ,new { @class = "form-control", style = "max-width:450px" });
         <br />
-        <input type="submit" value="Search" class="btn btn-outline-primary" />
+        <input type="submit" value="Search" class="btn btn-outline-primary" style="padding-left:100px; padding-right:100px"/>
     }
-        <br />
         @Html.Partial("_NewPostPartial")
 </div>
