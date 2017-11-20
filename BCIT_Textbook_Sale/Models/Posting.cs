@@ -20,6 +20,8 @@ namespace BCIT_Textbook_Sale.Models
         public System.DateTime postdate { get; set; }
         public string description { get; set; }
         public string programID { get; set; }
+        public string postingType { get; set; }
+        public string imglink { get; set; }
     
         public virtual Program Program { get; set; }
     }
