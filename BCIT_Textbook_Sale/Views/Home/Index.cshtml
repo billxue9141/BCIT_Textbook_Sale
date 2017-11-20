@@ -3,49 +3,19 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="jumbotron-title">
     <h1>BCIT Textbook Sales</h1>
 </div>
-
 <div class="jumbotron">
     @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
     {
-        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
-        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
-        @Html.TextBox("search", null ,new { @class = "form-control-searchbar" });
+        @Html.DropDownList("proID", null, new { @class = "form-control" , style = "max-width: 210px"})
+        @Html.DropDownList("buyORsell", null, new { @class = "form-control", style = "max-width: 210px" })
+        <br />
+        @Html.TextBox("search", null ,new { @class = "form-control", style = "max-width:450px" });
+        <br />
         <input type="submit" value="Search" class="btn btn-outline-primary" />
     }
         <br />
         @Html.Partial("_NewPostPartial")
-</div>
-<div class="jumbotron">
-    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
-    {
-        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
-        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
-        @Html.TextBox("search", null, new { @class = "form-control-searchbar" });
-        <input type="submit" value="Search" class="btn btn-outline-primary" />
-    }
-    <br />
-    @Html.Partial("_NewPostPartial")
-</div><div class="jumbotron">
-    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
-    {
-        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
-        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
-        @Html.TextBox("search", null, new { @class = "form-control-searchbar" });
-        <input type="submit" value="Search" class="btn btn-outline-primary" />
-    }
-    <br />
-    @Html.Partial("_NewPostPartial")
-</div><div class="jumbotron">
-    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
-    {
-        @Html.DropDownList("proID", null, new { @class = "form-control-select" })
-        @Html.DropDownList("buyORsell", null, new { @class = "form-control-select" })
-        @Html.TextBox("search", null, new { @class = "form-control-searchbar" });
-        <input type="submit" value="Search" class="btn btn-outline-primary" />
-    }
-    <br />
-    @Html.Partial("_NewPostPartial")
 </div>
