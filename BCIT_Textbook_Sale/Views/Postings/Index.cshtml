@@ -13,22 +13,23 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td rowspan="3" style="min-width:200px; min-height:200px; width:200px; height:200px">@Html.DisplayFor(modelItem => item.Program.programName)</td>
+            <td rowspan="3" style="min-width:200px; min-height:200px; width:200px; height:200px; text-align:center">
+                    <img src='@Url.Content("http://www.noorart.com/Arabic-for-Beginners-Textbook-Book-3_m.jpg")' />
+            </td>
             <td colspan="3">
                 @Html.ActionLink(
-               "[" + @Html.DisplayFor(modelItem => item.Program.programName).ToString() + "]" +
+               "[" + @Html.DisplayFor(modelItem => item.Program.programName).ToString() + "] " +
                            @Html.DisplayFor(modelItem => item.title).ToString(),
                            "Details", new { id = item.Id })
             </td>
         </tr>
         <tr>
-            <td style="width:20%">@Html.DisplayFor(modelItem => item.username)</td>
-            <td style="width:20%">@Html.DisplayFor(modelItem => item.postdate)</td>
-            <td>
+            <td style="width:30%">User Name: @Html.DisplayFor(modelItem => item.username)</td>
+            <td style="width:30%">Time Posted: @Html.DisplayFor(modelItem => item.postdate)</td>
+            <td style="text-align:center">
                 @if (Request.IsAuthenticated)
                 {
                     @Html.AntiForgeryToken()
-                    @Html.DisplayName(" | ")
                     @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                     @Html.DisplayName(" | ")
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })
@@ -36,7 +37,7 @@
             </td>
         </tr>
         <tr>
-            <td colspan="3">@Html.DisplayFor(modelItem => item.description)</td>
+            <td colspan="3" style="height:50%; vertical-align:top">@Html.DisplayFor(modelItem => item.description)</td>
         </tr>
     }
 </table>
