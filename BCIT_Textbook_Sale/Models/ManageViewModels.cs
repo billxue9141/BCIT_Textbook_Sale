@@ -12,6 +12,8 @@ namespace BCIT_Textbook_Sale.Models
         public string PhoneNumber { get; set; }
         public bool TwoFactor { get; set; }
         public bool BrowserRemembered { get; set; }
+        public string ProgramName { get; set; }
+        public string PerferredName { get; set; }
     }
 
     public class ManageLoginsViewModel

@@ -155,6 +155,7 @@ namespace BCIT_Textbook_Sale.Controllers
                     UserName = model.Email,
                     Email = model.Email,
                     PerferredName = model.PerferredName,
+                    AccountType = "regular_user",
                     ProgramName = model.ProgramName };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
