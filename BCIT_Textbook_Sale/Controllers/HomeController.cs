@@ -89,7 +89,10 @@ namespace BCIT_Textbook_Sale.Controllers
 
         public ActionResult BooksForSale(string proID, string buyORsell, string search)
         {
-
+            if(proID == "Program")
+            {
+                return View(db.Programs.Where(id => id.programID.Contains("CST")));
+            }
             return View(db.Programs.Where(id => id.programID.Contains(proID) && id.programName.Contains(search)));
         }
 
