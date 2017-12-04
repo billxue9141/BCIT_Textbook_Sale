@@ -761,6 +761,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
+  padding-top:10%;
 }
 
 .container:before,
@@ -2089,9 +2090,9 @@ fieldset[disabled] .btn-default.active {
 }
 
 .btn-primary {
-  color: #ffffff;
-  background-color: #428bca;
-  border-color: #357ebd;
+  color: #213416;
+  background-color: #C4D72E;
+  border-color: #C4D72E;
 }
 
 .btn-primary:hover,
@@ -4509,7 +4510,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 }
 
 .navbar-inverse {
-  background-color: #222222;
+  background-color: #505050;
   border-color: #080808;
 }
 
@@ -4950,10 +4951,9 @@ a.list-group-item.active > .badge,
   margin: 30px;
   font-size: 21px;
   font-weight: 200;
-  line-height: 2.1428571435;
   align-content:center;
   text-align:center;
-  color: cornflowerblue;
+  color: white;
   background-color: transparent;
 }
 
@@ -6883,4 +6883,29 @@ table.postingTable tfoot .links a{
   color: #FFFFFF;
   padding: 2px 8px;
   border-radius: 5px;
+}
+
+.logo {
+  float: left;
+  width:100px;
+  height:50px;
+  margin-left:50px;
+}
+.logo-image{
+    width:100px;
+    height:100px;
+    position:absolute;
+}
+.search-icon{
+    width:34px;
+    height:34px;
+    margin-top:7px;
+    position:absolute;
+}
+.index-button{
+    width:484px;
+    margin-left:12px;
+}
+.main-background{
+    padding-bottom:27%;
 }

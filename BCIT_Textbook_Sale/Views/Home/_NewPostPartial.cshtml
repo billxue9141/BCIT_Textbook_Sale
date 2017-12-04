@@ -1,5 +1,5 @@
-﻿@if (Request.IsAuthenticated)
+﻿@if (!Request.IsAuthenticated)
 {
     @Html.AntiForgeryToken()
-    @Html.ActionLink("Create New Post", "Create", "Postings", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-large" })
+    @Html.ActionLink("Create New Post", "Create", "Postings", routeValues: null, htmlAttributes: new { @class = "btn btn-primary btn-large index-button" })
 }
