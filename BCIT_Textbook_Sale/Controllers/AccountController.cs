@@ -9,12 +9,16 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BCIT_Textbook_Sale.Models;
+using System.Collections.Generic;
+using System.Data.Entity;
+
 
 namespace BCIT_Textbook_Sale.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
+        private TextbookDBEntities db = new TextbookDBEntities();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -139,6 +143,14 @@ namespace BCIT_Textbook_Sale.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            List<SelectListItem> items = new List<SelectListItem>();
+            var programId = db.Programs.Include(id => id.programID);
+            items.Add(new SelectListItem { Text = "Program", Value = "Program" });
+            foreach (Program p in db.Programs)
+            {
+                items.Add(new SelectListItem { Text = p.programID, Value = p.programID });
+            }
+            ViewBag.proID = items;
             return View();
         }
 
