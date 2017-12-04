@@ -3,18 +3,21 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron-title">
-    <h1>BCIT Textbook Sales</h1>
-</div>
-<div class="jumbotron-searchbar">
-    @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
-    {
-        @Html.DropDownList("proID", null, new { @class = "form-control" , style = "max-width: 210px"})
-        @Html.DropDownList("buyORsell", null, new { @class = "form-control", style = "max-width: 210px" })
-        <br />
-        @Html.TextBox("search", null ,new { @class = "form-control", style = "max-width:450px" });
-        <br />
-        <input type="submit" value="Search" class="btn btn-outline-primary" style="padding-left:100px; padding-right:100px"/>
-    }
+    <div class="jumbotron-title">
+        <div style="vertical-align:text-bottom;">
+            <img src="~/Images/logo.png" width="80" height="80" style="vertical-align:bottom; margin-bottom:10px;" />
+            <span style="font-size:70px; padding-top:20px"><b>TEXTBOOKS</b></span>
+        </div>
+        <h4 style="font-size:30px"><b>FOR SALES AT BCIT</b></h4>
+    </div>
+    <div class="jumbotron-searchbar">
+        @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
+        {
+            @Html.DropDownList("proID", null, new { @class = "form-control", style = "max-width: 232px; margin-left:10px; margin-right:20px" })
+            @Html.DropDownList("buyORsell", null, new { @class = "form-control", style = "max-width: 232px" })
+            <br />
+            @Html.TextBox("search", null, new { @class = "form-control", style = "max-width:450px; margin-left:-21px" });
+            <input type="image" src="~/Images/search.png" alt="Submit" class="search-icon" />
+        }
         @Html.Partial("_NewPostPartial")
-</div>
+    </div>
