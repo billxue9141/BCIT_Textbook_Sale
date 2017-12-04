@@ -3341,6 +3341,15 @@ input[type="button"].btn-block {
   border-bottom: 4px solid #000000;
   content: "";
 }
+.mid {
+    text-align:center;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    background-color:#505050;
+    height:10%;
+}
 
 .dropup .dropdown-menu,
 .navbar-fixed-bottom .dropdown .dropdown-menu {
