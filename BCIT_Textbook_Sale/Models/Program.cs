@@ -11,7 +11,8 @@ namespace BCIT_Textbook_Sale.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Program
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,7 +22,13 @@ namespace BCIT_Textbook_Sale.Models
         }
     
         public int Id { get; set; }
+
+        [Required]
+        [Display(Name = "Program ID")]
         public string programID { get; set; }
+
+        [Required]
+        [Display(Name = "Program Name")]
         public string programName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
