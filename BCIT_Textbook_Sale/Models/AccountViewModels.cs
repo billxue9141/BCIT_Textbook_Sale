@@ -81,14 +81,18 @@ namespace BCIT_Textbook_Sale.Models
         public string ConfirmPassword { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [Display(Name = "User Name")]
-        public string UserName { get; set; }
-
-        [Required]
         [StringLength(100, ErrorMessage = "Incorrect program name.")]
         [Display(Name = "Program Name")]
         public string ProgramName { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "User Name")]
+        public string PerferredName { get; set; }
+
+
+        public string AccountType { get; set; }
+
     }
 
     public class ResetPasswordViewModel
