@@ -18,12 +18,33 @@ namespace BCIT_Textbook_Sale.Models
     public partial class Posting
     {
         public int Id { get; set; }
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Title")]
         public string title { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
+        [DataType(DataType.Text)]
+        [Display(Name = "Email")]
         public string username { get; set; }
         public System.DateTime postdate { get; set; }
+
+        [Required]
+        [StringLength(1000, ErrorMessage = "The {0} can not be empty.", MinimumLength = 1)]
+        [Display(Name = "Detail")]
         public string description { get; set; }
+
+        [Required]
+        [Display(Name = "Program ID")]
         public string programID { get; set; }
+
+        [Required]
+        [Display(Name = "Buy/Sell")]
         public string postingType { get; set; }
+
+        [Display(Name = "img link")]
         public string imglink { get; set; }
     
         public virtual Program Program { get; set; }

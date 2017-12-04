@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BCIT_Textbook_Sale.Models;
+using Microsoft.AspNet.Identity;
 
 namespace BCIT_Textbook_Sale.Controllers
 {
@@ -40,6 +41,14 @@ namespace BCIT_Textbook_Sale.Controllers
         public ActionResult Create()
         {
             ViewBag.programID = new SelectList(db.Programs, "programID", "programName");
+
+            List<SelectListItem> buyorsell = new List<SelectListItem>();
+            buyorsell.Add(new SelectListItem { Text = "Sell", Value = "Sell" });
+            buyorsell.Add(new SelectListItem { Text = "Buy", Value = "Buy" });      
+            ViewBag.postingType = buyorsell;
+
+            ViewBag.userName = User.Identity.GetUserName();
+
             return View();
         }
 
@@ -48,7 +57,7 @@ namespace BCIT_Textbook_Sale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,title,username,postdate,description,programID")] Posting posting)
+        public ActionResult Create([Bind(Include = "Id,title,username,postdate,description,programID, postingType, imglink")] Posting posting)
         {
             if (ModelState.IsValid)
             {
