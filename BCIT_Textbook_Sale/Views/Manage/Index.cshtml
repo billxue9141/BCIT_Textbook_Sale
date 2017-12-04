@@ -26,9 +26,14 @@
             ]
         </dd>
 
+        <dt>Email: </dt>
+        <dd>
+            @User.Identity.Name
+        </dd>
+
         <dt>Name: </dt>
         <dd>
-            @User.Identity.GetUserName()
+            @Model.PerferredName
             [
             @Html.ActionLink("Change Name", "ChangeName")
             ]
@@ -36,7 +41,7 @@
 
         <dt>Program: </dt>
         <dd>
-            add program name here
+            @Model.ProgramName
             [
             @Html.ActionLink("Change Program", "ChangeProgram")
             ]

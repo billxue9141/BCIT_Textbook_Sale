@@ -69,6 +69,8 @@ namespace BCIT_Textbook_Sale.Controllers
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
+                ProgramName = UserManager.FindById(userId).ProgramName,
+                PerferredName = UserManager.FindById(userId).PerferredName,
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
