@@ -269,8 +269,10 @@ namespace BCIT_Textbook_Sale.Controllers
 
                 var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
                 if (user != null)
-                {
-                    await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+            {
+                user.PerferredName = model.NewName;
+                UserManager.Update(user);
+                await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                 }
                 return RedirectToAction("Index", new { Message = ManageMessageId.ChangeUserNameSuccess });
 
@@ -298,9 +300,11 @@ namespace BCIT_Textbook_Sale.Controllers
             var user = await UserManager.FindByIdAsync(User.Identity.GetUserId());
             if (user != null)
             {
+                user.ProgramName = model.NewProgramName;
+                UserManager.Update(user);
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
-            return RedirectToAction("Index", new { Message = ManageMessageId.ChangePasswordSuccess });
+            return RedirectToAction("Index", new { Message = ManageMessageId.ChangeProgramSuccess });
 
         }
 
