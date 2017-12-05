@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'c:\Users\Bill Xue\Source\Repos\BCIT_Textbook_Sale\BCIT_Textbook_Sale\Models\TextbookDB.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\Sean\Documents\Visual Studio 2015\TechPro Project\BCIT_Textbook_Sale\Models\TextbookDB.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

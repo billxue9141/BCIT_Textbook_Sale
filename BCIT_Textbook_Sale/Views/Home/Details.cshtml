@@ -1,0 +1,46 @@
+﻿@model BCIT_Textbook_Sale.Models.Posting
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div style="background-color:white; opacity:0.95; padding:50px; padding-top:20px; width:750px; margin:0 auto; height:600px">
+    <div style="height:30%">
+        <h1>@Html.DisplayFor(model => model.title)</h1>
+        <br />
+        <text><b>ADD TO BOOKMARK(WIP)</b></text>
+    </div>
+    <div style="height:50%">
+        <div style="width:50%; float:left">
+            @if (Model.imglink != null)
+            {
+                <img src='@Url.Content(Model.imglink)' onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'" width="300" height="200" style="border:1px solid black;" />
+            }
+            else
+            {
+                <img src='@Url.Content("~/Images/logo.png")' width="300" height="200" style="border:1px solid black;" />
+            }
+        </div>
+        <div style="width:50%; float:right">
+            <div>
+                <h4 style="border-bottom:1px solid black">Selling for $$$$</h4>
+                <br />
+                <text>Posted by @Html.DisplayFor(model => model.username)</text>
+                <br />
+                <text>Date @Html.DisplayFor(model => model.postdate)</text>
+            </div>
+            <br />
+
+            <div>
+                <h4 style="border-bottom:1px solid black">Description</h4>
+                <br />
+                <text>@Html.DisplayFor(model => model.description)</text>
+            </div>
+        </div>
+    </div>
+    <div style="height:20%">
+        <textarea style="border:1px solid black; height: 100px; width:100%;" placeholder="Enter Message"></textarea>
+        <br />
+        <button class="btn btn-danger" style="height:30px; width:150px; float:right;">Message Seller</button>
+    </div>
+</div>
