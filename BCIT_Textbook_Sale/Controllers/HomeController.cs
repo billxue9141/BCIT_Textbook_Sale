@@ -123,10 +123,28 @@ namespace BCIT_Textbook_Sale.Controllers
 
         public async Task<ActionResult> BooksOnRequest()
         {
+            List<SelectListItem> sortOptions = new List<SelectListItem>();
+            sortOptions.Add(new SelectListItem { Text = "Descending Date", Value = "Descending Date" });
+            sortOptions.Add(new SelectListItem { Text = "Ascending Date", Value = "Ascending Date" });
+            sortOptions.Add(new SelectListItem { Text = "Price: Low to High", Value = "Price: Low to High" });
+            sortOptions.Add(new SelectListItem { Text = "Price: High to Low", Value = "Price: High to Low" });
+            ViewBag.sortOptions = sortOptions;
             string UserEmail = await UserManager.GetEmailAsync(User.Identity.GetUserId());
             return View(db.Postings.Where(id => id.username.Contains(UserEmail)));
         }
-
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Posting posting = db.Postings.Find(id);
+            if (posting == null)
+            {
+                return HttpNotFound();
+            }
+            return View(posting);
+        }
         //
         // GET: /Manage/NewPost
         public ActionResult NewPost()
