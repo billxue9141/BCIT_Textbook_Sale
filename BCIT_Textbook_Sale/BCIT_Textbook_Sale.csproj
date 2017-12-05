@@ -246,6 +246,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\BCIT Background.jpg" />
     <Content Include="Images\braindamagedsean.jpg" />
     <Content Include="Images\library.jpg" />
     <Content Include="Images\logo.png" />
