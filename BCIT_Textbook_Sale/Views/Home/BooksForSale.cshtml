@@ -2,44 +2,45 @@
 @{
     ViewBag.Title = "Books For Sale";
 }
-<h2>@ViewBag.Title.</h2>
-
-<table class="postingTable">
-    @if (Model.Count() == 0)
-    {
-        <tr>
-            <td colspan="3" style="color:red">
-                No Matching Result
-            </td>
-        </tr>
-    }
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td rowspan="3" style="min-width:200px; min-height:200px; width:200px; height:200px; text-align:center">
-                <img src='@Url.Content("https://futureislam.files.wordpress.com/2012/02/a-textbook-of-hadith-studies.jpg")' width="180" height="180" />
-            </td>
-            <td colspan="3">
-                @Html.ActionLink("[" + @Html.DisplayFor(modelItem => item.title).ToString() +"] " +
+<div style="background-color:white; opacity:0.95; padding:50px;padding-top:20px; text-align:left;min-height:600px">
+    <h2>@ViewBag.Title.</h2>
+    <table class="postingTable">
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="3" style="color:red">
+                    No Matching Result
+                </td>
+            </tr>
+        }
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td rowspan="3" style="min-width:200px; min-height:200px; width:200px; height:200px; text-align:center">
+                    <img src='@Url.Content("https://futureislam.files.wordpress.com/2012/02/a-textbook-of-hadith-studies.jpg")' width="180" height="180" />
+                </td>
+                <td colspan="3">
+                    @Html.ActionLink("[" + @Html.DisplayFor(modelItem => item.title).ToString() + "] " +
                @Html.DisplayFor(modelItem => item.programID).ToString(),
-               "Details", new { id =item.Id})
-            </td>
-        </tr>
-        <tr>
-            <td style="width:30%">Posted By: @Html.DisplayFor(modelItem => item.username)</td>
-            <td style="width:30%">Time Posted: @Html.DisplayFor(modelItem => item.postdate)</td>
-            <td style="text-align:center">
-                @if (Request.IsAuthenticated)
+               "Details", new { id = item.Id })
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%">Posted By: @Html.DisplayFor(modelItem => item.username)</td>
+                <td style="width:30%">Time Posted: @Html.DisplayFor(modelItem => item.postdate)</td>
+                <td style="text-align:center">
+                    @if (Request.IsAuthenticated)
                 {
-                    @Html.AntiForgeryToken()
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                    @Html.DisplayName(" | ")
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                }
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" style="height:50%; vertical-align:top">@Html.DisplayFor(modelItem => item.description)</td>
-        </tr>
-    }
-</table>
+                        @Html.AntiForgeryToken()
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        @Html.DisplayName(" | ")
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height:50%; vertical-align:top">@Html.DisplayFor(modelItem => item.description)</td>
+            </tr>
+        }
+    </table>
+</div>
