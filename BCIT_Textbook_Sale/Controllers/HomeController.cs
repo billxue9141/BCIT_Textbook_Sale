@@ -89,18 +89,42 @@ namespace BCIT_Textbook_Sale.Controllers
 
         public ActionResult BooksForSale(string proID, string buyORsell, string search)
         {
-            if(proID == "Program")
+            if(proID == "Program" && buyORsell == "Buy/Sell" && search != "")
             {
-                return View(db.Programs.Where(id => id.programID.Contains("CST")));
+                return View(db.Postings.Where(id => id.title.Contains(search)));
             }
-            return View(db.Programs.Where(id => id.programID.Contains(proID) && id.programName.Contains(search)));
+            if(proID != "Program" && buyORsell == "Buy/Sell" && search == "")
+            {
+                return View(db.Postings.Where(id => id.programID.Contains(proID)));
+            }
+            if(proID == "Program" && buyORsell != "Buy/Sell" && search == "")
+            {
+                return View(db.Postings.Where(id => id.postingType.Contains(buyORsell)));
+            }
+            if(proID != "Program" && buyORsell != "Buy/Sell" && search == "")
+            {
+                return View(db.Postings.Where(id => id.programID.Contains(proID) && id.postingType.Contains(buyORsell)));
+            }
+            if(proID != "Program" && buyORsell == "Buy/Sell" && search != "")
+            {
+                return View(db.Postings.Where(id => id.programID.Contains(proID) && id.title.Contains(search)));
+            }
+            if(proID == "Program" && buyORsell != "Buy/Sell" && search != "")
+            {
+                return View(db.Postings.Where(id => id.postingType.Contains(buyORsell) && id.title.Contains(search)));
+            }
+            if (proID == "Program" && buyORsell == "Buy/Sell" && search == "")
+            {
+                var postings = db.Postings.Include(p => p.Program);
+                return View(postings.ToList());
+            }
+                return View(db.Postings.Where(id=>id.programID.Contains(proID) && id.postingType.Contains(buyORsell) && id.title.Contains(search)));
         }
 
-        public ActionResult BooksOnRequest()
+        public async Task<ActionResult> BooksOnRequest()
         {
-            ViewBag.Message = "People are looking for these books.";
-
-            return View();
+            string UserEmail = await UserManager.GetEmailAsync(User.Identity.GetUserId());
+            return View(db.Postings.Where(id => id.username.Contains(UserEmail)));
         }
 
         //
