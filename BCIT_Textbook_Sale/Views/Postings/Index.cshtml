@@ -4,43 +4,67 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Current Posting</h2>
-
-<p>
-    @if (Request.IsAuthenticated)
-    {
-    @Html.ActionLink("Create New", "Create")
-    }
-</p>
-<table class="postingTable">
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td rowspan="3" style="min-width:200px; min-height:200px; width:200px; height:200px; text-align:center">
-                    <img src='@Url.Content("https://futureislam.files.wordpress.com/2012/02/a-textbook-of-hadith-studies.jpg")' width="180" height="180"/>
+<div style="background-color:white; opacity:0.95; padding:50px;padding-top:20px; text-align:left">
+    <h2>Current Posting</h2>
+    <table>
+        <tr style="width:100%">
+            <td style="width:100%">
+                @if (Request.IsAuthenticated)
+                {
+                    @Html.ActionLink("Create New Post", "Create")
+                }
             </td>
-            <td colspan="3">
-                @Html.ActionLink(
+            <td style="text-align:right; width:100%">
+                Sort by: @Html.DropDownList("sortOptions", null, new { style = "max-width: 232px" })
+            </td>
+        </tr>
+    </table>
+    <p>
+
+    </p>
+    <table class="postingTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td rowspan="3" style="min-width:200px; min-height:200px; width:200px; height:200px; text-align:center">
+                    <a href='@Url.Action("Details", new { id = item.Id })'>
+                        @if (item.imglink != null)
+                        {
+                            <img src='@Url.Content(item.imglink)' onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'" width="180" height="180" />
+                        }
+                        else
+                        {
+                            <img src='@Url.Content("~/Images/logo.png")' width="180" height="180" />
+                        }
+                    </a>
+                        </td>
+                <td colspan="3">
+                    @Html.ActionLink(
                "[" + @Html.DisplayFor(modelItem => item.Program.programName).ToString() + "] " +
                            @Html.DisplayFor(modelItem => item.title).ToString(),
                            "Details", new { id = item.Id })
-            </td>
-        </tr>
-        <tr>
-            <td style="width:30%">Posted By: @Html.DisplayFor(modelItem => item.username)</td>
-            <td style="width:30%">Time Posted: @Html.DisplayFor(modelItem => item.postdate)</td>
-            <td style="text-align:center">
-                @if (Request.IsAuthenticated)
+                </td>
+            </tr>
+            <tr>
+                <td style="width:30%">Posted By: @Html.DisplayFor(modelItem => item.username)</td>
+                <td style="width:30%">Time Posted: @Html.DisplayFor(modelItem => item.postdate)</td>
+                <td style="text-align:center">
+                    @if (Request.IsAuthenticated)
                 {
-                    @Html.AntiForgeryToken()
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id })
-                    @Html.DisplayName(" | ")
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-                }
-            </td>
-        </tr>
-        <tr>
-            <td colspan="3" style="height:50%; vertical-align:top">@Html.DisplayFor(modelItem => item.description)</td>
-        </tr>
-    }
-</table>
+                        @Html.AntiForgeryToken()
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        @Html.DisplayName(" | ")
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" style="height:40%; vertical-align:top">
+                    Price: <i style="color:red">@Html.DisplayFor(modelItem => item.price)</i>
+                    <br /><br />
+                    @Html.DisplayFor(modelItem => item.description)
+                </td>
+            </tr>
+        }
+    </table>
+</div>

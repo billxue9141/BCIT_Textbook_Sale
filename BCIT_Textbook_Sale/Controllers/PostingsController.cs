@@ -59,6 +59,10 @@ namespace BCIT_Textbook_Sale.Controllers
         public ActionResult Index()
         {
             var postings = db.Postings.Include(p => p.Program);
+            List<SelectListItem> sortOptions = new List<SelectListItem>();
+            sortOptions.Add(new SelectListItem { Text = "By Date", Value = "By Date" });
+            sortOptions.Add(new SelectListItem { Text = "By Price", Value = "By Price" });
+            ViewBag.sortOptions = sortOptions;
             return View(postings.ToList());
         }
 
@@ -93,7 +97,7 @@ namespace BCIT_Textbook_Sale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "Id,title,username,postdate,description,programID, postingType, imglink")] Posting posting)
+        public async Task<ActionResult> Create([Bind(Include = "Id,title,username,postdate,description,programID, postingType, imglink, price")] Posting posting)
         {
             if (ModelState.IsValid)
             {
