@@ -24,10 +24,6 @@ namespace BCIT_Textbook_Sale.Models
         [Display(Name = "Title")]
         public string title { get; set; }
 
-        [Required]
-        [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 2)]
-        [DataType(DataType.Text)]
-        [Display(Name = "Email")]
         public string username { get; set; }
         public System.DateTime postdate { get; set; }
 

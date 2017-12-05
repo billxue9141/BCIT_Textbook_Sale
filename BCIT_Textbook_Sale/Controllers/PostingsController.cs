@@ -8,12 +8,50 @@ using System.Web;
 using System.Web.Mvc;
 using BCIT_Textbook_Sale.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
+using System.Threading.Tasks;
 
 namespace BCIT_Textbook_Sale.Controllers
 {
     public class PostingsController : Controller
     {
         private TextbookDBEntities db = new TextbookDBEntities();
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
+
+        public PostingsController()
+        {
+        }
+
+        public PostingsController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            UserManager = userManager;
+            SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
 
         // GET: Postings
         public ActionResult Index()
@@ -41,14 +79,10 @@ namespace BCIT_Textbook_Sale.Controllers
         public ActionResult Create()
         {
             ViewBag.programID = new SelectList(db.Programs, "programID", "programName");
-
             List<SelectListItem> buyorsell = new List<SelectListItem>();
             buyorsell.Add(new SelectListItem { Text = "Sell", Value = "Sell" });
-            buyorsell.Add(new SelectListItem { Text = "Buy", Value = "Buy" });      
+            buyorsell.Add(new SelectListItem { Text = "Buy", Value = "Buy" });
             ViewBag.postingType = buyorsell;
-
-            ViewBag.userName = User.Identity.GetUserName();
-
             return View();
         }
 
@@ -57,17 +91,17 @@ namespace BCIT_Textbook_Sale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,title,username,postdate,description,programID, postingType, imglink")] Posting posting)
+        public async Task<ActionResult> Create([Bind(Include = "Id,title,username,postdate,description,programID, postingType, imglink")] Posting posting)
         {
             if (ModelState.IsValid)
             {
                 posting.postdate = DateTime.Now;
-
+                posting.username = await UserManager.GetEmailAsync(User.Identity.GetUserId());
                 if (db.Postings.OrderByDescending(u => u.Id).FirstOrDefault() != null)
                     posting.Id = db.Postings.OrderByDescending(u => u.Id).FirstOrDefault().Id + 1;
                 else
                     posting.Id = 0;
-                    
+
                 db.Postings.Add(posting);
                 db.SaveChanges();
                 return RedirectToAction("Index");

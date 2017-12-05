@@ -36,9 +36,12 @@
                 <li>
                     @Html.ActionLink("Books for sale", "BooksForSale", "Home")
                 </li>
-                <li>
-                    @Html.ActionLink("Books on request", "BooksOnRequest", "Home")
-                </li>
+                @if (Request.IsAuthenticated)
+                {
+                    <li>
+                        @Html.ActionLink("My Posts", "BooksOnRequest", "Home")
+                    </li>
+                }
                 <li>
                     @Html.ActionLink("About", "About", "Home")
                 </li>

@@ -121,11 +121,10 @@ namespace BCIT_Textbook_Sale.Controllers
                 return View(db.Postings.Where(id=>id.programID.Contains(proID) && id.postingType.Contains(buyORsell) && id.title.Contains(search)));
         }
 
-        public ActionResult BooksOnRequest()
+        public async Task<ActionResult> BooksOnRequest()
         {
-            ViewBag.Message = "People are looking for these books.";
-
-            return View();
+            string UserEmail = await UserManager.GetEmailAsync(User.Identity.GetUserId());
+            return View(db.Postings.Where(id => id.username.Contains(UserEmail)));
         }
 
         //
