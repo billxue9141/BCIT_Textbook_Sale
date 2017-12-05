@@ -16,7 +16,7 @@
           <Property Name="description" Type="text" Nullable="false" />
           <Property Name="programID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="postingType" Type="varchar" MaxLength="50" />
-          <Property Name="imglink" Type="varchar" MaxLength="50" />
+          <Property Name="imglink" Type="varchar" MaxLength="200" />
           <Property Name="price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Program">
@@ -63,7 +63,7 @@
           <Property Name="programID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Program" Relationship="Self.FK_Postings_Program" FromRole="Postings" ToRole="Program" />
           <Property Name="postingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="imglink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="imglink" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Program">
