@@ -4,9 +4,9 @@
     ViewBag.Title = "Index";
 }
 
-<div style="background-color:white; opacity:0.95; padding:50px;padding-top:20px; text-align:left">
-    <h2>Current Posting</h2>
-    <table>
+<div style="background-color:white; opacity:0.95; padding:50px;padding-top:20px; text-align:left ;min-height:600px">
+    <h2>Current Postings</h2>
+    <table style="margin-bottom:50px;width:90%">
         <tr style="width:100%">
             <td style="width:100%">
                 @if (Request.IsAuthenticated)
@@ -20,13 +20,13 @@
         </tr>
     </table>
     <p>
-
+        <hr />
     </p>
-    <table class="postingTable">
-        @foreach (var item in Model)
-        {
+    @foreach (var item in Model)
+    {
+        <table style="background-color:white; margin-bottom:20px; margin-top:20px" width="90%">
             <tr>
-                <td rowspan="3" style="min-width:200px; min-height:200px; width:200px; height:200px; text-align:center">
+                <td rowspan="5" style="min-width:200px; min-height:200px; width:200px; height:200px; text-align:center">
                     <a href='@Url.Action("Details", new { id = item.Id })'>
                         @if (item.imglink != null)
                         {
@@ -37,20 +37,46 @@
                             <img src='@Url.Content("~/Images/logo.png")' width="180" height="180" />
                         }
                     </a>
-                        </td>
-                <td colspan="3">
+                </td>
+                <td colspan="3" style="font-size:20px; font-weight:bold">
                     @Html.ActionLink(
-               "[" + @Html.DisplayFor(modelItem => item.Program.programName).ToString() + "] " +
-                           @Html.DisplayFor(modelItem => item.title).ToString(),
-                           "Details", new { id = item.Id })
+                        "[" + @Html.DisplayFor(modelItem => item.Program.programName).ToString() + "] " +
+                    @Html.DisplayFor(modelItem => item.title).ToString(),
+                    "Details", new { id = item.Id })
                 </td>
             </tr>
             <tr>
-                <td style="width:30%">Posted By: @Html.DisplayFor(modelItem => item.username)</td>
-                <td style="width:30%">Time Posted: @Html.DisplayFor(modelItem => item.postdate)</td>
-                <td style="text-align:center">
+                <td style="width:50%">Posted By: @Html.DisplayFor(modelItem => item.username)</td>
+
+            </tr>
+            <tr>
+                <td style="width:50%">
+                    Time Posted: @Html.DisplayFor(modelItem => item.postdate)
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="3">
+                    @if (item.price != null)
+                    {
+                        if (item.postingType.Equals("Buy"))
+                        {
+                            <text>Looking to buy for: $</text>
+                            <i style="color:green">@Html.DisplayFor(modelItem => item.price)</i>
+                        }
+                        else
+                        {
+                            <text>"Selling Price: $</text>
+                            <i style="color:red">@Html.DisplayFor(modelItem => item.price)</i>
+                        }
+                    }
+
+                </td>
+            </tr>
+            <tr>
+                <td style="height:30%; vertical-align:top;text-align:right">
                     @if (Request.IsAuthenticated)
-                {
+                    {
                         @Html.AntiForgeryToken()
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id })
                         @Html.DisplayName(" | ")
@@ -58,13 +84,7 @@
                     }
                 </td>
             </tr>
-            <tr>
-                <td colspan="3" style="height:40%; vertical-align:top">
-                    Price: <i style="color:red">@Html.DisplayFor(modelItem => item.price)</i>
-                    <br /><br />
-                    @Html.DisplayFor(modelItem => item.description)
-                </td>
-            </tr>
-        }
-    </table>
+        </table>
+        <hr />
+    }
 </div>
