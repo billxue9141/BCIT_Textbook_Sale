@@ -58,10 +58,12 @@ namespace BCIT_Textbook_Sale.Controllers
         // GET: Postings
         public ActionResult Index()
         {
-            var postings = db.Postings.Include(p => p.Program);
+            var postings = db.Postings.Include(p => p.Program).OrderByDescending(p => p.postdate);
             List<SelectListItem> sortOptions = new List<SelectListItem>();
-            sortOptions.Add(new SelectListItem { Text = "By Date", Value = "By Date" });
-            sortOptions.Add(new SelectListItem { Text = "By Price", Value = "By Price" });
+            sortOptions.Add(new SelectListItem { Text = "Descending Date", Value = "Descending Date" });
+            sortOptions.Add(new SelectListItem { Text = "Ascending Date", Value = "Ascending Date" });
+            sortOptions.Add(new SelectListItem { Text = "Price: Low to High", Value = "Price: Low to High" });
+            sortOptions.Add(new SelectListItem { Text = "Price: High to Low", Value = "Price: High to Low" });
             ViewBag.sortOptions = sortOptions;
             return View(postings.ToList());
         }
