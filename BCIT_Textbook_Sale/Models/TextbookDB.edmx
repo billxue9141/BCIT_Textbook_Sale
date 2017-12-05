@@ -17,6 +17,7 @@
           <Property Name="programID" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="postingType" Type="varchar" MaxLength="50" />
           <Property Name="imglink" Type="varchar" MaxLength="50" />
+          <Property Name="price" Type="decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -63,6 +64,7 @@
           <NavigationProperty Name="Program" Relationship="Self.FK_Postings_Program" FromRole="Postings" ToRole="Program" />
           <Property Name="postingType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="imglink" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="Program">
           <Key>
@@ -102,6 +104,7 @@
           <EntitySetMapping Name="Postings">
             <EntityTypeMapping TypeName="TextbookDBModel.Posting">
               <MappingFragment StoreEntitySet="Postings">
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="imglink" ColumnName="imglink" />
                 <ScalarProperty Name="postingType" ColumnName="postingType" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

@@ -5,15 +5,19 @@
     ViewBag.Title = "Manage";
 }
 
-<h2>@ViewBag.Title.</h2>
-
-<p class="text-success">@ViewBag.StatusMessage</p>
-<div>
-    <h4>Change your account settings</h4>
+<div style="background-color:white; opacity:0.95; padding:50px;padding-top:20px; text-align:left">
+    <h2>My Account</h2>
+    <p class="text-success">@ViewBag.StatusMessage</p>
     <hr />
     <dl class="dl-horizontal">
-        <dt>Password:</dt>
+        <dt>Email: </dt>
         <dd>
+            @User.Identity.Name
+        </dd>
+
+        <dt>Password: </dt>
+        <dd>
+            ********
             [
             @if (Model.HasPassword)
             {
@@ -24,11 +28,6 @@
                 @Html.ActionLink("Create", "SetPassword")
             }
             ]
-        </dd>
-
-        <dt>Email: </dt>
-        <dd>
-            @User.Identity.Name
         </dd>
 
         <dt>Name: </dt>

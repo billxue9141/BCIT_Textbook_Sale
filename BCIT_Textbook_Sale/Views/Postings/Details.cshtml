@@ -3,46 +3,58 @@
 @{
     ViewBag.Title = "Details";
 }
+<div style="background-color:white; opacity:0.95; padding:50px;padding-top:20px; text-align:left">
+    <table style="align-content:center; text-align:center; width:100%">
+        <tr>
+            <td><h2>@Html.DisplayFor(model => model.title)</h2><hr /></td>
+        </tr>
+        <tr>
+            <td>
+                @if (Model.imglink != null)
+                {
+                    <img src='@Url.Content(Model.imglink)' onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'" width="400" height="400" />
+                }
+                else
+                {
+                    <img src='@Url.Content("~/Images/logo.png")' width="400" height="400" />
+                }
+            </td>
+        </tr>
 
-<table style="align-content:center; text-align:center; width:100%">
-    <tr>
-        <td><h2>@Html.DisplayFor(model => model.title)</h2><hr /></td>
-    </tr>
-    <tr>
-        <td><img src='@Url.Content("https://futureislam.files.wordpress.com/2012/02/a-textbook-of-hadith-studies.jpg")' width="400" height="400" /></td>
-    </tr>
+        <tr>
+            <td>Program: @Html.DisplayFor(model => model.programID)</td>
+        </tr>
 
-    <tr>
-        <td>Program: @Html.DisplayFor(model => model.programID)</td>
-    </tr>
+        <tr>
+            <td>Posted By: @Html.DisplayFor(model => model.username)</td>
+        </tr>
 
-    <tr>
-        <td>Posted By: @Html.DisplayFor(model => model.username)</td>
-    </tr>
+        <tr>
+            <td>Contact Info: N/A</td>
+        </tr>
 
-    <tr>
-        <td>Contact Info: N/A</td>
-    </tr>
+        <tr>
+            <td>Time Posted: @Html.DisplayNameFor(model => model.postdate)</td>
+        </tr>
 
-    <tr>
-        <td>Time Posted: @Html.DisplayNameFor(model => model.postdate)</td>
-    </tr>
+        <tr>
+            <td>Type: Sell</td>
+        </tr>
 
-    <tr>
-        <td>Type: Sell</td>
-    </tr>
+        <tr>
+            <td>Price: N/A</td>
+        </tr>
 
-    <tr>
-    <td>Price: N/A</td>
-    </tr>
+        <tr>
+            <td>
+                <hr />Detail:<br />
+                @Html.DisplayFor(model => model.description)
+            </td>
+        </tr>
+    </table>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</div>
 
-    <tr>
-        <td><hr />Detail:<br />
-        @Html.DisplayFor(model => model.description)</td>
-    </tr>
-</table>
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
