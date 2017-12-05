@@ -1,8 +1,24 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Threading.Tasks;
+using System.Web.Hosting;
 
 namespace BCIT_Textbook_Sale.Models
 {
+
+    public class SendEmailViewModel
+    {
+        [Required]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Email")]
+        public string Email { get; set; }
+
+    }
     public class ExternalLoginConfirmationViewModel
     {
         [Required]

@@ -249,6 +249,9 @@
     <Content Include="Images\braindamagedsean.jpg" />
     <Content Include="Images\library.jpg" />
     <Content Include="Images\logo.png" />
+    <Content Include="Images\logo_2.png" />
+    <Content Include="Images\logo_3.png" />
+    <Content Include="Images\logo_4.png" />
     <Content Include="Images\seanaftersurgery.jpg" />
     <Content Include="Images\search.png" />
     <Content Include="Models\TextbookDB.Context.tt">
@@ -273,6 +276,7 @@
     <Content Include="Models\TextbookDB.edmx.diagram">
       <DependentUpon>TextbookDB.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\ostrich-regular.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />

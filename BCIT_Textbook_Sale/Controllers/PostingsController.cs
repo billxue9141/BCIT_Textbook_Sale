@@ -10,6 +10,8 @@ using BCIT_Textbook_Sale.Models;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using System.Threading.Tasks;
+using System.Web.Hosting;
+using System.IO;
 
 namespace BCIT_Textbook_Sale.Controllers
 {
