@@ -21,15 +21,12 @@
                 <a href="@Url.Action("Index","Home")" class="logo" style="overflow:hidden;">
                     <img src="@Url.Content("~/Images/logo.png")" class="logo-image" />
                 </a>
-                @Html.ActionLink("TEXTBOOKS FOR TRADE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("TEXTBOOKS FOR TRADE", "Index", "Home", new { area = "" }, new { @class = "navbar-brand text" })
             </div>
             @Html.Partial("_LoginPartial")
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav side-nav">
-                <li>
-                    @Html.ActionLink("Home", "Index", "Home")
-                </li>
                 <li>
                     @Html.ActionLink("Postings", "Index", "Postings")
                 </li>

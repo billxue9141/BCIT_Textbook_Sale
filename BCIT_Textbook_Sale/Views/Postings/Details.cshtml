@@ -4,45 +4,36 @@
     ViewBag.Title = "Details";
 }
 
-<table style="align-content:center; text-align:center; width:100%">
-    <tr>
-        <td><h2>@Html.DisplayFor(model => model.title)</h2><hr /></td>
-    </tr>
-    <tr>
-        <td><img src='@Url.Content("https://futureislam.files.wordpress.com/2012/02/a-textbook-of-hadith-studies.jpg")' width="400" height="400" /></td>
-    </tr>
+<div style="background-color:white; opacity:0.95; padding:50px; padding-top:20px; width:750px; margin:0 auto; height:600px">
+    <div style="height:30%">
+        <h1>@Html.DisplayFor(model => model.title)</h1>
+        <br />
+        <text><b>ADD TO BOOKMARK(WIP)</b></text>
+    </div>
+    <div style="height:50%">
+        <div style="width:50%; float:left" >
+            <img src='@Url.Content("https://futureislam.files.wordpress.com/2012/02/a-textbook-of-hadith-studies.jpg")' width="300" height="200" style="border:1px solid black;"/>
+        </div>
+        <div style="width:50%; float:right">
+            <div>
+                <h4 style="border-bottom:1px solid black">Selling for $$$$</h4>
+                <br />
+                <text>Posted by @Html.DisplayFor(model => model.username)</text>
+                <br />
+                <text>Date @Html.DisplayFor(model => model.postdate)</text>
+            </div>
+            <br />
 
-    <tr>
-        <td>Program: @Html.DisplayFor(model => model.programID)</td>
-    </tr>
-
-    <tr>
-        <td>Posted By: @Html.DisplayFor(model => model.username)</td>
-    </tr>
-
-    <tr>
-        <td>Contact Info: N/A</td>
-    </tr>
-
-    <tr>
-        <td>Time Posted: @Html.DisplayNameFor(model => model.postdate)</td>
-    </tr>
-
-    <tr>
-        <td>Type: Sell</td>
-    </tr>
-
-    <tr>
-    <td>Price: N/A</td>
-    </tr>
-
-    <tr>
-        <td><hr />Detail:<br />
-        @Html.DisplayFor(model => model.description)</td>
-    </tr>
-</table>
-
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <div>
+                <h4 style="border-bottom:1px solid black">Description</h4>
+                <br />
+                <text>@Html.DisplayFor(model => model.description)</text>
+            </div>
+        </div>
+    </div>
+    <div style="height:20%">
+        <textarea style="border:1px solid black; height: 100px; width:100%;" placeholder="Enter Message"></textarea>
+        <br />
+        <button class="btn btn-danger" style="height:30px; width:150px; float:right;">Message Seller</button>
+    </div>
+</div>

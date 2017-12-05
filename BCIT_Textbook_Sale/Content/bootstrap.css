@@ -310,6 +310,7 @@ html {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -761,7 +762,7 @@ pre code {
   padding-left: 15px;
   margin-right: auto;
   margin-left: auto;
-  padding-top:10%;
+  padding-top:6%;
 }
 
 .container:before,
@@ -2173,8 +2174,7 @@ fieldset[disabled] .btn-warning.active {
 
 .btn-danger {
   color: #ffffff;
-  background-color: #d9534f;
-  border-color: #d43f3a;
+  background-color: #003e6b;
 }
 
 .btn-danger:hover,
@@ -2183,8 +2183,7 @@ fieldset[disabled] .btn-warning.active {
 .btn-danger.active,
 .open .dropdown-toggle.btn-danger {
   color: #ffffff;
-  background-color: #d2322d;
-  border-color: #ac2925;
+  background-color: #003e6b;
 }
 
 .btn-danger:active,
@@ -2393,6 +2392,7 @@ input[type="button"].btn-block {
   -webkit-transition: height 0.35s ease;
           transition: height 0.35s ease;
 }
+
 
 @font-face {
   font-family: 'Glyphicons Halflings';
@@ -4947,10 +4947,6 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron-title {
-  padding: 30px;
-  margin: 30px;
-  font-size: 21px;
-  font-weight: 200;
   align-content:center;
   text-align:center;
   color: white;
@@ -4958,7 +4954,6 @@ a.list-group-item.active > .badge,
 }
 
 .jumbotron-searchbar {
-  padding: 30px;
   margin-bottom: 30px;
   font-size: 21px;
   font-weight: 200;
@@ -4966,6 +4961,7 @@ a.list-group-item.active > .badge,
   text-align:center;
   color: inherit;
   background-color: transparent;
+  margin-right:30px;
 }
 
 .jumbotron h1 {
@@ -6908,4 +6904,14 @@ table.postingTable tfoot .links a{
 }
 .main-background{
     padding-bottom:27%;
+}
+
+@font-face{
+    font-family: 'Ostrich Sans';
+    src: url(../fonts/ostrich-regular.ttf) format('truetype');
+}
+.text{
+    font-family: "Ostrich Sans";
+    font-size:30px;
+    color:#333333;
 }

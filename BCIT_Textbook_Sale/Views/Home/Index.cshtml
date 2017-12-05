@@ -3,12 +3,8 @@
     ViewBag.Title = "Home Page";
 }
 
-    <div class="jumbotron-title">
-        <div style="vertical-align:text-bottom;">
-            <img src="~/Images/logo.png" width="80" height="80" style="vertical-align:bottom; margin-bottom:10px;" />
-            <span style="font-size:70px; padding-top:20px"><b>TEXTBOOKS</b></span>
-        </div>
-        <h4 style="font-size:30px"><b>FOR SALES AT BCIT</b></h4>
+    <div class="jumbotron-title" style="height:450px; margin-top: -100px;">
+        <img src="~/Images/logo_3.png" style="vertical-align:bottom; margin-bottom:10px;" />
     </div>
     <div class="jumbotron-searchbar">
         @using (Html.BeginForm("BooksForSale", "Home", FormMethod.Post))
