@@ -12,6 +12,14 @@
     </div>
     <div style="height:50%">
         <div style="width:50%; float:left" >
+            @if (Model.imglink != null)
+            {
+                <img src='@Url.Content(Model.imglink)' onerror="this.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/300px-No_image_available.svg.png'" width="300" height="200" style="border:1px solid black;" />
+            }
+            else
+            {
+                <img src='@Url.Content("~/Images/logo.png")' width="300" height="200" style="border:1px solid black;"/>
+            }
             <img src='@Url.Content("https://futureislam.files.wordpress.com/2012/02/a-textbook-of-hadith-studies.jpg")' width="300" height="200" style="border:1px solid black;"/>
         </div>
         <div style="width:50%; float:right">
