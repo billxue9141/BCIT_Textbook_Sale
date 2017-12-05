@@ -46,6 +46,8 @@ namespace BCIT_Textbook_Sale.Models
 
         [Display(Name = "img link")]
         public string imglink { get; set; }
+
+        public double price { get; set; }
     
         public virtual Program Program { get; set; }
     }

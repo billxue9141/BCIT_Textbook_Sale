@@ -57,7 +57,7 @@ namespace BCIT_Textbook_Sale.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,title,username,postdate,description,programID, postingType, imglink")] Posting posting)
+        public ActionResult Create([Bind(Include = "Id,title,username,postdate,description,programID, postingType, imglink, price")] Posting posting)
         {
             if (ModelState.IsValid)
             {
