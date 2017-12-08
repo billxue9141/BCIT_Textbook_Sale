@@ -23,7 +23,20 @@
         </div>
         <div style="width:50%; float:right">
             <div>
-                <h4 style="border-bottom:1px solid black">Selling for $$$$</h4>
+                <h4 style="border-bottom:1px solid black">
+                @if (Model.price != null)
+                {
+                    if (Model.postingType.Equals("Buy"))
+                    {
+                        <text>Looking to buy for: $</text>
+                        <i style="color:green">@Html.DisplayFor(modelItem => Model.price)</i>
+                    }
+                    else
+                    {
+                        <text>Selling Price: $</text>
+                        <i style="color:red">@Html.DisplayFor(modelItem => Model.price)</i>
+                    }
+                }</h4>
                 <br />
                 <text>Posted by @Html.DisplayFor(model => model.username)</text>
                 <br />
@@ -38,9 +51,13 @@
             </div>
         </div>
     </div>
+    @if (Request.IsAuthenticated)
+    {
+
     <div style="height:20%">
         <textarea style="border:1px solid black; height: 100px; width:100%;" placeholder="Enter Message"></textarea>
         <br />
         <button class="btn btn-danger" style="height:30px; width:150px; float:right;">Message Seller</button>
     </div>
+    }
 </div>

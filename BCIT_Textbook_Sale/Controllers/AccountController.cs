@@ -145,7 +145,6 @@ namespace BCIT_Textbook_Sale.Controllers
         {
             List<SelectListItem> items = new List<SelectListItem>();
             var programId = db.Programs.Include(id => id.programID);
-            items.Add(new SelectListItem { Text = "Program", Value = "Program" });
             foreach (Program p in db.Programs)
             {
                 items.Add(new SelectListItem { Text = p.programID, Value = p.programID });
