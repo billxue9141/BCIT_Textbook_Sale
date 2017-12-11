@@ -41,7 +41,16 @@
                                 }
                             </a>
                         </td>
-                        <td colspan="3" style="font-size:20px; font-weight:bold">
+                        <td colspan="3" style="font-size:20px; font-weight:bold">[
+                            @if (item.postingType.Equals("Buy"))
+                            {
+                                <i style="color:green">@Html.DisplayFor(modelItem => item.postingType)</i>
+                            }
+                            else
+                            {
+                                <i style="color:red">@Html.DisplayFor(modelItem => item.postingType)</i>
+}
+                        ]
                             @Html.ActionLink(
                  "[" + @Html.DisplayFor(modelItem => item.Program.programName).ToString() + "] " +
              @Html.DisplayFor(modelItem => item.title).ToString(),
@@ -69,7 +78,7 @@
                                 }
                                 else
                                 {
-                                    <text>"Selling Price: $</text>
+                                    <text>Selling Price: $</text>
                                     <i style="color:red">@Html.DisplayFor(modelItem => item.price)</i>
                                 }
                             }

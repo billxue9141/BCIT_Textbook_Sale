@@ -89,7 +89,13 @@ namespace BCIT_Textbook_Sale.Controllers
 
         public ActionResult BooksForSale(string proID, string buyORsell, string search)
         {
-            if(proID == "Program" && buyORsell == "Buy/Sell" && search != "")
+            List<SelectListItem> sortOptions = new List<SelectListItem>();
+            sortOptions.Add(new SelectListItem { Text = "Descending Date", Value = "Descending Date" });
+            sortOptions.Add(new SelectListItem { Text = "Ascending Date", Value = "Ascending Date" });
+            sortOptions.Add(new SelectListItem { Text = "Price: Low to High", Value = "Price: Low to High" });
+            sortOptions.Add(new SelectListItem { Text = "Price: High to Low", Value = "Price: High to Low" });
+            ViewBag.sortOptions = sortOptions;
+            if (proID == "Program" && buyORsell == "Buy/Sell" && search != "")
             {
                 return View(db.Postings.Where(id => id.title.Contains(search)));
             }
@@ -172,6 +178,69 @@ namespace BCIT_Textbook_Sale.Controllers
             return RedirectToAction("Index");
         }
 
+
+        // GET: Postings/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Posting posting = db.Postings.Find(id);
+            if (posting == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.programID = new SelectList(db.Programs, "programID", "programName", posting.programID);
+            List<SelectListItem> buyorsell = new List<SelectListItem>();
+            buyorsell.Add(new SelectListItem { Text = "Sell", Value = "Sell" });
+            buyorsell.Add(new SelectListItem { Text = "Buy", Value = "Buy" });
+            ViewBag.postingType = buyorsell;
+            return View(posting);
+        }
+
+        // POST: Postings/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Id,title,username,postdate,description,programID")] Posting posting)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(posting).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.programID = new SelectList(db.Programs, "programID", "programName", posting.programID);
+            return View(posting);
+        }
+
+        // GET: Postings/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Posting posting = db.Postings.Find(id);
+            if (posting == null)
+            {
+                return HttpNotFound();
+            }
+            return View(posting);
+        }
+
+        // POST: Postings/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Posting posting = db.Postings.Find(id);
+            db.Postings.Remove(posting);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }
